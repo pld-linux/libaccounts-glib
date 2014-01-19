@@ -8,7 +8,7 @@ Summary(pl.UTF-8):	Biblioteka do zarządzania kontami dla aplikacji opartych na 
 Name:		libaccounts-glib
 Version:	1.16
 Release:	1
-License:	LGPL v3
+License:	LGPL v2.1
 Group:		Libraries
 #Source0Download: http://code.google.com/p/accounts-sso/downloads/list
 Source0:	http://accounts-sso.googlecode.com/files/%{name}-%{version}.tar.gz
