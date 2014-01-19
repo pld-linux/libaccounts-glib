@@ -1,0 +1,11 @@
+--- libaccounts-glib-1.16/libaccounts-glib/ag-provider.c.orig	2014-01-03 17:27:22.000000000 +0100
++++ libaccounts-glib-1.16/libaccounts-glib/ag-provider.c	2014-01-19 13:38:23.814289097 +0100
+@@ -441,7 +441,7 @@
+ gboolean
+ ag_provider_get_single_account (AgProvider *provider)
+ {
+-    g_return_val_if_fail (provider != NULL, NULL);
++    g_return_val_if_fail (provider != NULL, FALSE);
+     return provider->single_account;
+ }
+ 
