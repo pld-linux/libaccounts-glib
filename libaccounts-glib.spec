@@ -2,12 +2,12 @@
 # Conditional build:
 %bcond_without	static_libs	# static library
 %bcond_without	tests		# testsuite build [switch broken in configure]
-#
+
 Summary:	Accounts management library for GLib applications
 Summary(pl.UTF-8):	Biblioteka do zarządzania kontami dla aplikacji opartych na bibliotece GLib
 Name:		libaccounts-glib
 Version:	1.16
-Release:	1
+Release:	2
 License:	LGPL v2.1
 Group:		Libraries
 #Source0Download: http://code.google.com/p/accounts-sso/downloads/list
@@ -25,8 +25,8 @@ BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	libxslt-progs
 BuildRequires:	pkgconfig
 BuildRequires:	python-pygobject3-devel >= 3.0
-BuildRequires:	sqlite3-devel >= 3.7.0
 BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	sqlite3-devel >= 3.7.0
 Requires:	glib2 >= 1:2.36
 Requires:	sqlite3 >= 3.7.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -71,6 +71,9 @@ Statyczna biblioteka libaccounts-glib.
 Summary:	API documentation for libaccounts-glib library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libaccounts-glib
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API documentation for libaccounts-glib library.
