@@ -7,7 +7,7 @@ Summary:	Accounts management library for GLib applications
 Summary(pl.UTF-8):	Biblioteka do zarządzania kontami dla aplikacji opartych na bibliotece GLib
 Name:		libaccounts-glib
 Version:	1.16
-Release:	4
+Release:	5
 License:	LGPL v2.1
 Group:		Libraries
 #Source0Download: http://code.google.com/p/accounts-sso/downloads/list
@@ -100,6 +100,9 @@ Summary(pl.UTF-8):	API języka Vala do biblioteki libaccounts-glib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description -n vala-libaccounts-glib
 Vala API for libaccounts-glib.
