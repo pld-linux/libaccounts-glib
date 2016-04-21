@@ -6,21 +6,23 @@
 Summary:	Accounts management library for GLib applications
 Summary(pl.UTF-8):	Biblioteka do zarządzania kontami dla aplikacji opartych na bibliotece GLib
 Name:		libaccounts-glib
-Version:	1.16
-Release:	5
+Version:	1.21
+Release:	1
 License:	LGPL v2.1
 Group:		Libraries
-#Source0Download: http://code.google.com/p/accounts-sso/downloads/list
-Source0:	http://accounts-sso.googlecode.com/files/%{name}-%{version}.tar.gz
-Patch0:		%{name}-types.patch
-# Source0-md5:	9cdb46354885a8973bccd05090360361
-URL:		http://code.google.com/p/accounts-sso/
+#Source0Download: https://gitlab.com/accounts-sso/libaccounts-glib/tags?page=6
+Source0:	https://gitlab.com/accounts-sso/libaccounts-glib/repository/archive.tar.bz2?ref=VERSION_%{version}
+# Source0-md5:	1289685160b463b1b227d2a8aa8e2077
+URL:		https://gitlab.com/accounts-sso/libaccounts-glib
+BuildRequires:	autoconf >= 2.64
+BuildRequires:	automake >= 1:1.11
 %{?with_tests:BuildRequires:	check-devel >= 0.9.4}
 BuildRequires:	docbook-dtd43-xml
 BuildRequires:	docbook-style-xsl
 BuildRequires:	glib2-devel >= 1:2.36
 BuildRequires:	gobject-introspection-devel >= 1.30.0
 BuildRequires:	gtk-doc >= 1.14
+BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	libxslt-progs
 BuildRequires:	pkgconfig
@@ -111,11 +113,17 @@ Vala API for libaccounts-glib.
 API języka Vala do biblioteki libaccounts-glib.
 
 %prep
-%setup -q
-%patch0 -p1
+%setup -q -n %{name}-VERSION_%{version}-00254a604a7c7bd38c41794a80ad8930e90f21aa
 
 %build
+%{__gtkdocize} --flavour no-tmpl
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
+	--enable-gtk-doc \
 	--disable-silent-rules \
 	%{?with_static_libs:--enable-static} \
 	%{!?with_tests:--disable-tests} \
