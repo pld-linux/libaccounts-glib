@@ -6,15 +6,14 @@
 Summary:	Accounts management library for GLib applications
 Summary(pl.UTF-8):	Biblioteka do zarządzania kontami dla aplikacji opartych na bibliotece GLib
 Name:		libaccounts-glib
-Version:	1.21
+Version:	1.23
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
-#Source0Download: https://gitlab.com/accounts-sso/libaccounts-glib/tags?page=6
+#Source0Download: https://gitlab.com/accounts-sso/libaccounts-glib/tags?updated_desc
 # TODO: in the future, use fake GET arg to force sane filename on df
-#Source0:	https://gitlab.com/accounts-sso/libaccounts-glib/repository/archive.tar.bz2?ref=VERSION_%{version}&fake_out=/%{name}-%{version}.tar.bz2
-Source0:	archive.tar.bz2%3Fref=VERSION_%{version}
-# Source0-md5:	1289685160b463b1b227d2a8aa8e2077
+Source0:	https://gitlab.com/accounts-sso/libaccounts-glib/repository/archive.tar.bz2?ref=VERSION_%{version}&fake_out=/%{name}-%{version}.tar.bz2
+# Source0-md5:	f71c0393fb7cd6397b145fe4ad0ebba9
 URL:		https://gitlab.com/accounts-sso/libaccounts-glib
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.11
@@ -115,7 +114,7 @@ Vala API for libaccounts-glib.
 API języka Vala do biblioteki libaccounts-glib.
 
 %prep
-%setup -q -n %{name}-VERSION_%{version}-00254a604a7c7bd38c41794a80ad8930e90f21aa
+%setup -q -n %{name}-VERSION_%{version}-8d14b10652b2fe6c25d8ad8334e2d5023d254313
 
 %build
 %{__gtkdocize} --flavour no-tmpl
