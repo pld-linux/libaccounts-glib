@@ -11,7 +11,6 @@ Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 #Source0Download: https://gitlab.com/accounts-sso/libaccounts-glib/tags?updated_desc
-# TODO: in the future, use fake GET arg to force sane filename on df
 Source0:	https://gitlab.com/accounts-sso/libaccounts-glib/repository/archive.tar.bz2?ref=VERSION_%{version}&fake_out=/%{name}-%{version}.tar.bz2
 # Source0-md5:	f71c0393fb7cd6397b145fe4ad0ebba9
 URL:		https://gitlab.com/accounts-sso/libaccounts-glib
