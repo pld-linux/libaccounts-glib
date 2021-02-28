@@ -75,9 +75,7 @@ Statyczna biblioteka libaccounts-glib.
 Summary:	API documentation for libaccounts-glib library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libaccounts-glib
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API documentation for libaccounts-glib library.
@@ -117,9 +115,7 @@ Summary(pl.UTF-8):	API języka Vala do biblioteki libaccounts-glib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description -n vala-libaccounts-glib
 Vala API for libaccounts-glib.
