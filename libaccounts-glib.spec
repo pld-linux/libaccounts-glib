@@ -28,7 +28,7 @@ BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 %{?with_python2:BuildRequires:	python-pygobject3-devel >= 3.0}
 BuildRequires:	python3-pygobject3-devel >= 3.0
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	sed >= 4.0
 BuildRequires:	sqlite3-devel >= 3.7.0
 Requires:	glib2 >= 1:2.36
