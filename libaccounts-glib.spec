@@ -8,7 +8,7 @@ Summary:	Accounts management library for GLib applications
 Summary(pl.UTF-8):	Biblioteka do zarządzania kontami dla aplikacji opartych na bibliotece GLib
 Name:		libaccounts-glib
 Version:	1.24
-Release:	9
+Release:	10
 License:	LGPL v2.1
 Group:		Libraries
 #Source0Download: https://gitlab.com/accounts-sso/libaccounts-glib/tags
@@ -143,9 +143,9 @@ Dane ITS Accounts dla narzędzi gettext.
 %endif
 
 %build
-%meson build
+%meson
 
-%ninja_build -C build
+%meson_build
 
 # not built from meson
 xsltproc --nonet -o build/ --path docs/reference:build/docs/reference \
@@ -156,7 +156,7 @@ xsltproc --nonet -o build/ --path docs/reference:build/docs/reference \
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %py3_comp $RPM_BUILD_ROOT%{py3_sitedir}/gi/overrides
 %py3_ocomp $RPM_BUILD_ROOT%{py3_sitedir}/gi/overrides
