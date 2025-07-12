@@ -8,7 +8,7 @@ Summary:	Accounts management library for GLib applications
 Summary(pl.UTF-8):	Biblioteka do zarządzania kontami dla aplikacji opartych na bibliotece GLib
 Name:		libaccounts-glib
 Version:	1.24
-Release:	10
+Release:	11
 License:	LGPL v2.1
 Group:		Libraries
 #Source0Download: https://gitlab.com/accounts-sso/libaccounts-glib/tags
