@@ -7,13 +7,13 @@
 Summary:	Accounts management library for GLib applications
 Summary(pl.UTF-8):	Biblioteka do zarządzania kontami dla aplikacji opartych na bibliotece GLib
 Name:		libaccounts-glib
-Version:	1.24
-Release:	11
+Version:	1.27
+Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 #Source0Download: https://gitlab.com/accounts-sso/libaccounts-glib/tags
-Source0:	https://gitlab.com/accounts-sso/libaccounts-glib/-/archive/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	bdd91a93ec089547d2d186e9840575c5
+Source0:	https://gitlab.com/accounts-sso/libaccounts-glib/-/archive/VERSION_%{version}/%{name}-VERSION_%{version}.tar.bz2
+# Source0-md5:	06bd4775b0afd62dfa22dcba3bca5f06
 URL:		https://gitlab.com/accounts-sso/libaccounts-glib
 %{?with_tests:BuildRequires:	check-devel >= 0.9.4}
 BuildRequires:	docbook-dtd43-xml
@@ -23,13 +23,12 @@ BuildRequires:	gobject-introspection-devel >= 1.30.0
 BuildRequires:	gtk-doc >= 1.14
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	libxslt-progs
-BuildRequires:	meson
+BuildRequires:	meson >= 0.48.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 %{?with_python2:BuildRequires:	python-pygobject3-devel >= 3.0}
 BuildRequires:	python3-pygobject3-devel >= 3.0
 BuildRequires:	rpmbuild(macros) >= 2.042
-BuildRequires:	sed >= 4.0
 BuildRequires:	sqlite3-devel >= 3.7.0
 Requires:	glib2 >= 1:2.36
 Requires:	sqlite3 >= 3.7.0
@@ -136,14 +135,12 @@ Accounts ITS data for gettext tools.
 Dane ITS Accounts dla narzędzi gettext.
 
 %prep
-%setup -q
-
-%if %{with static_libs}
-%{__sed} -i -e '/^ag_library =/ s/shared_library/library/' libaccounts-glib/meson.build
-%endif
+%setup -q -n %{name}-VERSION_%{version}
 
 %build
-%meson
+%meson \
+	%{!?with_static_libs:--default-library=shared} \
+	-Dinstall-py-overrides=true
 
 %meson_build
 
@@ -183,7 +180,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc NEWS README.md
 %attr(755,root,root) %{_bindir}/ag-backup
 %attr(755,root,root) %{_bindir}/ag-tool
-%attr(755,root,root) %{_libdir}/libaccounts-glib.so.1
+%attr(755,root,root) %{_libdir}/libaccounts-glib.so.*.*
+%{_libdir}/libaccounts-glib.so.0
 %{_libdir}/girepository-1.0/Accounts-1.0.typelib
 # devel only or runtime too?
 %{_datadir}/dbus-1/interfaces/com.google.code.AccountsSSO.Accounts.Manager.xml
@@ -196,7 +194,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libaccounts-glib.so
+%{_libdir}/libaccounts-glib.so
 %{_datadir}/gir-1.0/Accounts-1.0.gir
 %{_includedir}/libaccounts-glib
 %{_pkgconfigdir}/libaccounts-glib.pc
